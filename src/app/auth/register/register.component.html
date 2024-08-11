@@ -1,0 +1,41 @@
+<div class="flex m-auto h-screen justify-center " >
+
+    <form (ngSubmit)="registerForm()" #myForm="ngForm" class="p-4 rounded-lg border m-auto w1/3">
+        <h1 class="text-center text-xl">Register</h1>
+
+        <div class="my-5 w-full">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="p-2 w-full border rounded"
+             placeholder="email" name="email" [(ngModel)]="form.email" #email="ngModel" required>
+        </div> 
+        <div *ngIf="email.touched && (email.dirty || email.invalid)" [hidden]="email.valid" class="p-2 bg-red-300 text-red-800 rounded">
+            Email field must be valid
+        </div>
+
+        <div class="my-5 w-full">
+            <label for="password">password</label>
+            <input type="password" id="password" class="p-2 rounded w-full border" 
+            placeholder="password" name="password" [(ngModel)]="form.password" #password="ngModel" required>
+        </div>
+        <div *ngIf="password.touched && (password.dirty || password.invalid)" [hidden]="password.valid" class="p-2 bg-red-300 text-red-800 rounded">
+            Password field must be valid
+        </div>
+
+        <div class="my-5 w-full">
+            <label for="confirm_password">COnfirm password</label>
+            <input type="password" id="confirm_password" class="p-2 rounded w-full border"
+             placeholder="confirm_password" name="confirm_password" [(ngModel)]="form.confirm_password" #confirm_password="ngModel" required>
+        </div>
+        <div *ngIf="confirm_password.touched && (password.dirty || password.invalid)" [hidden]="confirm_password.valid" class="p-2 bg-red-300 text-red-800 rounded">
+            Confirm password field must be valid
+        </div>
+
+        <div class="my-5 w-full">
+            <input type="submit"
+            [disabled]="myForm.form.invalid"
+            class="p-2 w-full bg-purple-700 text-white hover:bg-purple-700"
+            >
+        </div>
+    </form>
+
+</div>

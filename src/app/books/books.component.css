@@ -1,0 +1,14 @@
+/* 
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+    margin: 20px;
+    width: 25%;
+    text-overflow: ellipsis;
+} */

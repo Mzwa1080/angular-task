@@ -1,0 +1,15 @@
+<h1>Programming Book List!</h1>
+<button (click)="toggleBooks()">Toogle</button>
+
+
+<div class="columns-2  flex items-start space-x-4">
+
+    <ul *ngIf="isShowing"> 
+        <ng-container   *ngFor="let singleBook of books; let i=index">
+            <app-book  [book]="singleBook "></app-book>
+        </ng-container>
+    
+    </ul>
+</div>
+
+

@@ -1,0 +1,26 @@
+<div class="flex m-auto h-screen justify-center " >
+
+        <form (ngSubmit)="submitMethod()"  #myForm="ngForm"  class="p-4 rounded-lg border m-auto w1/3">
+            <h1 class="text-center text-xl">Login</h1>
+
+            <div class="my-5 w-full">
+                <label for="email">Email</label>
+                <input   type="email" id="email" 
+                class="p-2 w-full border rounded" placeholder="email" name="email" [(ngModel)]="form.email" required>
+            </div>
+
+            
+            <div class="my-5 w-full">
+                <label for="password">password</label>
+                <input  type="password"
+                 id="password" class="p-2 rounded w-full border" name="password  " [(ngModel)]="form.confirm_password" placeholder="password" #password="ngModel" required >
+            </div>
+
+            <div class="my-5 w-full">
+                <input type="submit"
+                class="p-2 w-full bg-purple-700 text-white hover:bg-purple-700"
+                >
+            </div>
+        </form>
+
+</div>
