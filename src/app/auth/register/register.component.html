@@ -24,9 +24,9 @@
         <div class="my-5 w-full">
             <label for="confirm_password">COnfirm password</label>
             <input type="password" id="confirm_password" class="p-2 rounded w-full border"
-             placeholder="confirm_password" name="confirm_password" [(ngModel)]="form.confirm_password" #confirm_password="ngModel" required>
+             placeholder="confirm_password" name="confirm_password" [(ngModel)]="form.confirm_password" #confirm_password="ngModel"   required>
         </div>
-        <div *ngIf="confirm_password.touched && (password.dirty || password.invalid)" [hidden]="confirm_password.valid" class="p-2 bg-red-300 text-red-800 rounded">
+        <div *ngIf="confirm_password.touched && (confirm_password.dirty || confirm_password.invalid)" [hidden]="confirm_password.valid" class="p-2 bg-red-300 text-red-800 rounded">
             Confirm password field must be valid
         </div>
 

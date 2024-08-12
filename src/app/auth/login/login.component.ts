@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginForm } from '../../interface/Auth';
+import { getAuth, signInWithEmailAndPassword } from "../../../../node_modules/@firebase/auth";
+
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,32 @@ import { LoginForm } from '../../interface/Auth';
 export class LoginComponent {
   // email : string = "";
 
-  form: LoginForm ={
+  form: LoginForm = {
     email: '',
-    password : '',
+    password: '',
     confirm_password : ''
-  } 
+  }
 
 
-  submitMethod(){
-    alert('Mzwaaaa')
+  submitMethod() {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, this.form.email, this.form.password)
+      .then((userCredential) => {
+        // Signed in 
+        console.log('You have been logged in!!');
+        
+        // const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }
+
+  submit(){
+    console.log('Submitt something when this button is');
+    
   }
 
 }

@@ -1,10 +1,11 @@
-<div class="">
+<div class=" bg-white rounded-lg shadow-md p-4">
 
-  <li class="book  flex items-start border-2 border-black rounded-lg p-4">
-      <img [src]="book.src" [alt]="book.src" class="w-24 h-32 object-cover mr-4">
-      <p class="">{{book.name | titlecase}}, {{book.author | titlecase}} <span>{{book.price | currency:'R'}}  </span></p>
-      <button class="rounded-none bg-amber-300	"  *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
-      <button *ngIf="isInCart"  (click)="removeFromCart()">Remove from cart</button>
+  <li class="book  ">
+      <img [src]="book.src" [alt]="book.src" class="w-full h-48 object-cover rounded-lg">
+      <p class="mt-4 text-lg font-semibold">{{book.name | titlecase}}, {{book.author | titlecase}} <span class="mt-2 text-gray-600">{{book.price | currency:'R'}}  </span></p>
+      <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded	"  *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
+      <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" *ngIf="isInCart"  (click)="removeFromCart()">Remove from cart</button>
     </li>
       
 </div>
+

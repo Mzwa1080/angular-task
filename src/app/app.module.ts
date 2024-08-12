@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, AuthModule
+    AppRoutingModule, AuthModule,
+    // AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireAuthModule
+
   ],
   providers: [
     provideClientHydration()
