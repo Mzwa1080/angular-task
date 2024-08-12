@@ -13,6 +13,7 @@ export class CartService {
   }
 
   get(){
+    
     return this.cart;
   }
 

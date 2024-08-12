@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
+import { provideUserIdleConfig } from 'angular-user-idle';
+
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
@@ -27,7 +29,8 @@ import { AuthModule } from './auth/auth.module';
 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideUserIdleConfig({idle:60, timeout:40, ping:120})
   ],
   bootstrap: [AppComponent]
 })

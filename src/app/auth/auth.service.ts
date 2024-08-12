@@ -9,11 +9,33 @@ import { signOut } from "firebase/auth";
 })
 export class AuthService {
   constructor(private router: Router) { }
-  //  == = == == = == = =VARIABLESS
+
+
+  //  == = == == = ==VARIABLESS
   isAuthenticated: boolean = false
-
   auth = getAuth();
+  
+  private timeoutHandle: any;
+  private readonly SESSION_TIMEOUT = 1 * 60 * 1000;
 
+
+
+  private setupSessionTimeout() {
+    this.timeoutHandle = setTimeout(() => {
+      this.logout();
+      alert('Session expired due to inactivity');
+    }, this.SESSION_TIMEOUT);
+  }
+
+  resetTimeout() {
+    clearTimeout(this.timeoutHandle);
+    this.setupSessionTimeout();
+  }
+
+  startSession() {
+    this.resetTimeout();
+    this.setupSessionTimeout();
+  }
   // ==== == == = METHODS + = == = == = 
   login(form: LoginForm) {
     console.log('hello hereeee')
@@ -54,12 +76,14 @@ export class AuthService {
   }
 
   logout() {
-
     const auth = getAuth();
+
     signOut(auth).then(() => {
-      // Sign-out successful.
+
       this.router.navigate(['login'])
+
       this.isAuthenticated = false;
+
     }).catch((error) => {
       // An error happened.
     });
