@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/rowser",
+    "public": "dist/mzwa-tutorial/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -43,6 +43,30 @@ export class BooksService {
       src : 'https://m.media-amazon.com/images/I/51E2055ZGUL._SY342_.jpg',
       price : 399.98
   
+    },
+    {
+      
+      name : 'Clean Code',
+      author : 'Uncle Robert C Martin',
+      src : 'https://m.media-amazon.com/images/I/51E2055ZGUL._SY342_.jpg',
+      price : 399.98
+  
+    },
+    {
+      
+      name : 'Clean Code',
+      author : 'Uncle Robert C Martin',
+      src : 'https://m.media-amazon.com/images/I/51E2055ZGUL._SY342_.jpg',
+      price : 399.98
+  
+    },
+    {
+      
+      name : 'Clean Code',
+      author : 'Uncle Robert C Martin',
+      src : 'https://m.media-amazon.com/images/I/51E2055ZGUL._SY342_.jpg',
+      price : 399.98
+  
     }
   
   ]
