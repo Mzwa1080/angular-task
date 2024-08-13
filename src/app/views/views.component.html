@@ -1,0 +1,18 @@
+<h1 class="text-lg">View Works</h1>
+
+<div class=" bg-white rounded-lg shadow-md p-4">
+
+  <li class="book list-none flex gap-x-8 gap-y-4">
+      <img [src]="book.src" [alt]="book.src" class="w-1/2 h-48 object-cover rounded-md flex-1">
+      <p class="mt-4 text-lg font-semibold flex-1">{{book.name | titlecase}}, {{book.author | titlecase}} <span class="mt-2 text-gray-600">{{book.price | currency:'R'}}  </span></p>
+     
+    <button class="flex-1" (click)="increment()"> + </button>
+    <p> </p>
+    <p class="flex-1"> - </p>
+</li>
+      
+</div>
+
+
+
+<!-- (click)="getBookById(book.id)" -->

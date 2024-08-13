@@ -9,6 +9,7 @@ import { BookComponent } from './book/book.component';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
 import { provideUserIdleConfig } from 'angular-user-idle';
+import { ViewsComponent } from './views/views.component';
 
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -19,6 +20,7 @@ import { provideUserIdleConfig } from 'angular-user-idle';
     BooksComponent,
     BookComponent,
     CartComponent,
+    ViewsComponent,
     
   ],
   imports: [
