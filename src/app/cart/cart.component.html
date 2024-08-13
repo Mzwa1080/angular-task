@@ -1,11 +1,16 @@
 <h1>Your Cart!</h1>
 
 <div *ngIf="getCart().length > 0">
-    {{getCart().length}}
+    <p class="text-lg mb-4">{{getCart().length}}</p>
 
-    <div *ngFor="let book of getCart()">
-        <p class="my-4 text-2">{{book.name}}</p>
-        <img [src]="book.src" alt="">
+    <div *ngFor="let book of getCart()" class="bg-white rounded-lg shadow-md p-4 m-2 max-w-2xl mx-auto flex items-center justify-between space-x-4">
+        <img [src]="book.src" alt="" class="h-32 w-24 object-contain">
+        <div class="flex space-x-12">
+            <p class="text-lg font-semibold">{{ book.name }}</p>
+            <p class="text-lg font-semibold">{{ book.name }}</p>
+            <p class="text-lg font-semibold">{{ book.name }}</p>
+
+        </div>
     </div>
 </div>
 
