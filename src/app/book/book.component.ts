@@ -28,7 +28,9 @@ export class BookComponent {
   this.cartService.remove(this.book)    
   }
 
+// You need method to add to cart shart when clicking rthe + butnno
 
+// method to calculate the lenghrt the inisde the moethid , then its the one I'm going interpolate
 
 
 }

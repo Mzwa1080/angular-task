@@ -79,9 +79,10 @@ export class BooksService {
     return this.booklist.find((book) => book.id == id)
   }
 
-addBookToTheCart(){
-  
-}
+// addBookToTheCart(singleBook : BooksService){
+    
+//    this.booklist.push(singleBook)
+// }
 
   
 }
