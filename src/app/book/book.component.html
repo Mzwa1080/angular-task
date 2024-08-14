@@ -5,7 +5,7 @@
       <p class="mt-4 text-lg font-semibold">{{book.name | titlecase}}, {{book.author | titlecase}} <span class="mt-2 text-gray-600">{{book.price | currency:'R'}}  </span></p>
       <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded	"  *ngIf="!isInCart" (click)="addToCart()">Add to cart</button>
       <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" *ngIf="isInCart"  (click)="removeFromCart()">Remove from cart</button>
-    <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" [routerLink]="'views/' + book.id"> Views</button>
+    <button class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" [routerLink]="'views/' + book.id"> View</button>
     </li>
       
 </div>

@@ -1,18 +1,20 @@
 <h1>Your Cart!</h1>
 
-<div *ngIf="getCart().length > 0">
-    <p class="text-lg mb-4">{{getCart().length}}</p>
+<div *ngIf="books.length > 0">
+    <p class="text-lg mb-4">{{books.length}} items</p>
 
-    <div *ngFor="let book of getCart()" class="bg-white rounded-lg shadow-md p-4 m-2 max-w-2xl mx-auto flex items-center justify-between space-x-4">
+    <div *ngFor="let book of books" class="bg-white rounded-lg shadow-md p-4 m-2 max-w-2xl mx-auto flex items-center justify-between space-x-4">
         <img [src]="book.src" alt="" class="h-32 w-24 object-contain">
-        <div class="flex space-x-12">
-            <p class="text-lg font-semibold">{{ book.name }}</p>
-            <p class="text-lg font-semibold">{{ book.name }}</p>
-            <p class="text-lg font-semibold">{{ book.name }}</p>
-
+        <p class="mt-4 text-lg font-semibold">
+            {{book.name | titlecase}}, {{book.author | titlecase}} 
+            <span class="mt-2 text-gray-600">{{book.price * book.quantity}}  </span>
+        </p>
+        <div class="flex items-center mt-4 space-x-4"> 
+            <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="decrement(book)">-</button>
+            <p class="text-lg font-semibold">{{book.quantity}}</p>
+            <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="increment(book)">+</button>
         </div>
     </div>
 </div>
 
-<div *ngIf="getCart().length ==0"> No books in your cart</div>
-
+<div *ngIf="books.length == 0">No books in your cart</div>

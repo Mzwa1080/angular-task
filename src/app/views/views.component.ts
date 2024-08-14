@@ -2,61 +2,67 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../interface/Book';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { BooksService } from '../books/books.service';
-import { CartService } from '../cart/cart.service';
-import { Observable } from 'rxjs';
-import { BookComponent } from '../book/book.component';
-import { ViewService } from './view.service';
+import { BehaviorService } from '../shared/behavior.service';
 
 @Component({
   selector: 'app-views',
   templateUrl: './views.component.html',
-  styleUrl: './views.component.css'
+  styleUrls: ['./views.component.css']
 })
 export class ViewsComponent implements OnInit {
-  book:Book;
-  addBookToCart : BookComponent;
-  addCurrentBookToCart : CartService
-  viewService: ViewService = new ViewService();
-  currentQuantity: number = 0;
-  quantity : number
+  book: Book;
+  quantity: number = 0;
 
-  addToCart : CartService 
-
-  constructor(route: ActivatedRoute, private bookService:BooksService) {
-    route.paramMap.subscribe((params: ParamMap) => {
-      if(params.get('bookId')){
-        // console.log(bookService.getBookById(this.book.id));
-        // console.log('---', bookService.getBookById(parseInt(params.get('bookId'))));
-         this.book = bookService.getBookById(parseInt(params.get('bookId')));
-        
+  constructor(
+    private route: ActivatedRoute,
+    private bookService: BooksService,
+    private behaviorService: BehaviorService
+  ) {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const bookId = params.get('bookId');
+      if (bookId) {
+        this.book = this.bookService.getBookById(parseInt(bookId));
       }
-    })
-
-
-    
+    });
   }
+
   ngOnInit(): void {
     this.getItemsInsideCart();
   }
-  
-  increment() {
-    this.viewService.add(this.book.id)
-    this.bookPrice()
-  }    
-  
-  decrement( ){
-    this.viewService.subtract(this.book.id)
-    this.bookPrice()
 
+  increment() {
+    if (this.book) {
+      this.behaviorService.add(this.book);
+      this.updateQuantity();  
+    }
   }
 
-  getItemsInsideCart(){
-    // console.log(this.bookService.getBookById(this.book.id));
-    this.viewService.get().subscribe({
+  decrement() {
+    if (this.book && this.quantity > 0) {
+      this.behaviorService.subtract(this.book);
+      this.updateQuantity();
+    }
+  }
+
+  getItemsInsideCart() {
+    this.behaviorService.getCartItems().subscribe({
       next: (res) => {
-        this.currentQuantity = res.find(x => x.id === this.book.id).quantity;
+        if (this.book) {
+          const item = res.find(x => x.id === this.book.id);
+          if (item) {
+            this.quantity = item.quantity;
+          }
+        }
       }
-    })
+    });
+  }
+
+  updateQuantity() {
+    const cartItems = this.behaviorService.behaviorSubject.value;
+    const item = cartItems.find(x => x.id === this.book.id);
+    if (item) {
+      this.quantity = item.quantity;
+    }
   }
 
   bookPrice(){
@@ -64,7 +70,7 @@ export class ViewsComponent implements OnInit {
     // console.log(this.currentQuantity);
 
     if(this.quantity > 0){
-      this.quantity  = this.currentQuantity * this.book.price
+      this.quantity  = this.quantity * this.book.price
       console.log(this.quantity);
       
     }else{
@@ -79,6 +85,4 @@ export class ViewsComponent implements OnInit {
   //   }
     
   }
-
-
 }

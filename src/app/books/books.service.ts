@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Book } from '../interface/Book';
 @Injectable({
   providedIn: 'root'
 })
@@ -6,7 +7,7 @@ export class BooksService {
 
   constructor() { }
 
-  booklist = [ {
+  booklist: Book[] = [ {
     id: 1,
     name : 'Clean Code',
     author : 'Uncle Robert C Martin',
