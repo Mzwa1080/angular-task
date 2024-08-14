@@ -6,7 +6,6 @@ import { CartComponent } from './cart/cart.component';
 import { BehaviorService } from './shared/behavior.service';
 
 @Component({
-  // selector: '#app-root',
   selector : 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
