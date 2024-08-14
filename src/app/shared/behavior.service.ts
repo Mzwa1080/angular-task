@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../interface/Book';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class BehaviorService {
   }
   
 
-  subtract(book: Book) {
+    subtract(book: Book) {
     const currentValue = this.behaviorSubject.value.find(x => x.id === book.id);
     if (currentValue && currentValue.quantity > 1) {
       const updatedBooks = this.behaviorSubject.value.map(b =>
@@ -48,6 +48,10 @@ export class BehaviorService {
     return this.cartItems.asObservable();
   }
 
-  
+  getTotalQuantity(): Observable<number> {
+    return this.behaviorSubject.asObservable().pipe(
+      map(books => books.reduce((total, book) => total + (book.quantity || 0), 0))
+    );
+  }
 
 }

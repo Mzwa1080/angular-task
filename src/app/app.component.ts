@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase.config';
 import { AuthService } from './auth/auth.service';
 import { CartComponent } from './cart/cart.component';
+import { BehaviorService } from './shared/behavior.service';
 
 @Component({
   // selector: '#app-root',
@@ -13,15 +14,22 @@ import { CartComponent } from './cart/cart.component';
 
 
 export class AppComponent {
+  
+    cartItemCount: number = 0;
   title = 'Book-Library';
   cartItems: CartComponent
   itemsValue : number 
-  constructor(private authService : AuthService) {}
+  constructor(private authService : AuthService , private behaviorService: BehaviorService) {}
   
   ngOnInit():void{
     initializeApp(firebaseConfig)
+    this.behaviorService.getTotalQuantity().subscribe(count => {
+      this.cartItemCount = count;
+    });
   }
-  
+
+
+
   isAuthenticated(){
     return this.authService.isAuthenticated
   }
