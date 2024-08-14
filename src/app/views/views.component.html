@@ -8,7 +8,7 @@
     <div class="flex flex-col flex-1 ml-4"> 
       <p class="mt-4 text-lg font-semibold">
         {{book.name | titlecase}}, {{book.author | titlecase}} 
-        <span class="mt-2 text-gray-600">{{(currentQuantity > 1 ? book.price * currentQuantity: book.price) | currency:'R'}}</span>
+        <span class="mt-2 text-gray-600">{{quantity | currency:'R'}}</span>
       </p>
       
       <div class="flex items-center mt-4 space-x-4"> 

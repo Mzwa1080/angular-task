@@ -46,6 +46,8 @@ export class ViewsComponent implements OnInit {
   
   decrement( ){
     this.viewService.subtract(this.book.id)
+    this.bookPrice()
+
   }
 
   getItemsInsideCart(){
@@ -58,7 +60,17 @@ export class ViewsComponent implements OnInit {
   }
 
   bookPrice(){
-    console.log(this.book.price);
+    // console.log(this.book.price);
+    // console.log(this.currentQuantity);
+
+    if(this.quantity > 0){
+      this.quantity  = this.currentQuantity * this.book.price
+      console.log(this.quantity);
+      
+    }else{
+      this.quantity = this.book.price
+    }
+    
     // if(this.quantity > 1){
   //     this.book.price * this.quantity;
   //   }

@@ -12,7 +12,7 @@ import { AuthService } from './auth/auth.service';
 
 
 export class AppComponent {
-  title = 'Mzwa-tutorial';
+  title = 'Book-Library';
 
   constructor(private authService : AuthService) {}
   
