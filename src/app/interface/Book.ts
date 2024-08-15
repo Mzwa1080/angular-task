@@ -5,6 +5,7 @@ export class Book {
     src : string;
     price : number;
     quantity?: number = 1;
+    description : string
   }
 
 

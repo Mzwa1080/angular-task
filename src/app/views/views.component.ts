@@ -11,7 +11,7 @@ import { BehaviorService } from '../shared/behavior.service';
 })
 export class ViewsComponent implements OnInit {
   book: Book;
-  quantity: number = 0;
+  quantity: number = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +35,10 @@ export class ViewsComponent implements OnInit {
       this.behaviorService.add(this.book);
       this.updateQuantity();  
     }
+  }
+
+  addBookToCartForView(){
+    this.behaviorService.add(this.book)
   }
 
   decrement() {
@@ -85,4 +89,7 @@ export class ViewsComponent implements OnInit {
   //   }
     
   }
+
+
+
 }

@@ -54,4 +54,7 @@ export class BehaviorService {
     );
   }
 
+  // getTotalPrice(): Observable<number>{
+  //   return this.behaviorSubject.asObservable().
+  // }
 }
