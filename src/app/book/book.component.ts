@@ -45,7 +45,7 @@ producerIncrementEpoch(){
   addToCart() {
     this.isInCart = true;
     this.behaviorService.add(this.book)
-    
+
   }
 
 

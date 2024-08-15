@@ -33,11 +33,10 @@ export class BehaviorService {
       console.log(this.behaviorSubject.value);
   }
 
-  getBooksFromLocalStorageForCart(){
-    console.log(localStorage.getItem('Cart-Items'));
-    
+  getBooksFromLocalStorageForCart(){    
     return localStorage.getItem('Cart-Items')
   }
+
 
   subtract(book: Book) {
     const currentValue = this.behaviorSubject.value.find(x => x.id === book.id);
@@ -45,11 +44,15 @@ export class BehaviorService {
       const updatedBooks = this.behaviorSubject.value.map(b =>
         b.id === book.id ? { ...b, quantity: b.quantity - 1 } : b
       );
+      
       this.behaviorSubject.next(updatedBooks);
     } else if (currentValue && currentValue.quantity === 1) {
       const updatedBooks = this.behaviorSubject.value.filter(b => b.id !== book.id);
       this.behaviorSubject.next(updatedBooks);
+      localStorage.clear()
+      
     }
+
     console.log(this.behaviorSubject.value);
   }
 

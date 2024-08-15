@@ -38,10 +38,6 @@ export class CartComponent implements OnInit {
 
   }
 
-  checkTotalAmount(){
-    console.log('Checking total amount of the book' + this.behaviorService.getTotalNumberOfBooks())
-    
-  }
 
   increment(book: Book) {
     this.behaviorService.add(book);
@@ -49,6 +45,7 @@ export class CartComponent implements OnInit {
 
   decrement(book: Book) {
     this.behaviorService.subtract(book);
+
   }
 
   totalAmountt(){

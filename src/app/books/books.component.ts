@@ -21,9 +21,9 @@ export class BooksComponent {
     this.books = this.booksService.getBooks();  
   }
 
-  ngOnDestroy() {
-    this.toDestroy = !this.toDestroy
-  }
+  // ngOnDestroy() {
+  //   this.toDestroy = !this.toDestroy
+  // }
 
   toggleBooks() {
     this.isShowing = !this.isShowing;
