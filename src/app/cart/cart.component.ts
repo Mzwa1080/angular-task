@@ -17,11 +17,16 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.behaviorService.getItems().subscribe({
       next: (response: Book[]): void => {
-        this.books = response;
+        if(response.length === 0){
+          this.books = JSON.parse(this.behaviorService.getBooksFromLocalStorageForCart()); 
+        } else{
+          this.books = response;
+        }
       },
       error: (error) => {
       }
     });
+
     
     this.behaviorService.getCartTotalPrice().subscribe({
       next: (total: number) => {

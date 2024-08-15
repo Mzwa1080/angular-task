@@ -23,16 +23,21 @@ export class BehaviorService {
     const currentValue = this.behaviorSubject.value.find(x => x.id === book.id);
     if (!currentValue) {
       this.behaviorSubject.next([...this.behaviorSubject.value, { ...book, quantity: 1 }]);
-      localStorage.setItem('Cart-Items ' , this.behaviorSubject.value.toString() )
     } else {
       const updatedBooks = this.behaviorSubject.value.map(b =>
         b.id === book.id ? { ...b, quantity: b.quantity + 1 } : b);
-      this.behaviorSubject.next(updatedBooks);
-    }
-    
-    console.log(this.behaviorSubject.value);
+        this.behaviorSubject.next(updatedBooks);
+      }
+      
+      localStorage.setItem('Cart-Items' , JSON.stringify(this.behaviorSubject.value))
+      console.log(this.behaviorSubject.value);
   }
 
+  getBooksFromLocalStorageForCart(){
+    console.log(localStorage.getItem('Cart-Items'));
+    
+    return localStorage.getItem('Cart-Items')
+  }
 
   subtract(book: Book) {
     const currentValue = this.behaviorSubject.value.find(x => x.id === book.id);
@@ -49,6 +54,7 @@ export class BehaviorService {
   }
 
   getItems() {
+    this.getBooksFromLocalStorageForCart()
     return this.behaviorSubject.asObservable();
   }
 
