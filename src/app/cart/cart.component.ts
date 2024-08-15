@@ -10,6 +10,7 @@ import { Book } from '../interface/Book';
 export class CartComponent implements OnInit {
 
   books: Book[] = [];
+  totalAmount = 0;
 
   constructor(private readonly behaviorService: BehaviorService) { }
   
@@ -21,6 +22,20 @@ export class CartComponent implements OnInit {
       error: (error) => {
       }
     });
+    
+    this.behaviorService.getTotalPrice().subscribe({
+      next: (total: number) => {
+        this.totalAmount = total;
+      },
+      error: (error) => {
+      }
+    });    // console.log(this.behaviorService.getCartItems());
+
+  }
+
+  checkTotalAmount(){
+    console.log('Checking total amount of the book' + this.behaviorService.getTotalNumberOfBooks())
+    
   }
 
   increment(book: Book) {
@@ -30,4 +45,12 @@ export class CartComponent implements OnInit {
   decrement(book: Book) {
     this.behaviorService.subtract(book);
   }
+
+  totalAmountt(){
+    console.log(this.behaviorService.getItems());
+    
+  }
 }
+
+
+
