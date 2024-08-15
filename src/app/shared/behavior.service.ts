@@ -61,9 +61,9 @@ export class BehaviorService {
       map(books => books.reduce((total, book) => total + (book.quantity || 0), 0))
     );
   }
-  getTotalPrice(): Observable<number> {
+  getCartTotalPrice(): Observable<number> {
     return this.behaviorSubject.asObservable().pipe(
-      map(books => books.reduce(((total, book) => total + (book.price * book.quantity)), 0))
+      map(bookPrice => bookPrice.reduce(((total, book) => total + (book.price * book.quantity)), 0))
     );
   }
   

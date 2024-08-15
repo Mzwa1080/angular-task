@@ -23,7 +23,7 @@ export class CartComponent implements OnInit {
       }
     });
     
-    this.behaviorService.getTotalPrice().subscribe({
+    this.behaviorService.getCartTotalPrice().subscribe({
       next: (total: number) => {
         this.totalAmount = total;
       },
