@@ -8,7 +8,7 @@
     <div class="flex flex-col flex-1 ml-4"> 
       <p class="mt-4 text-lg font-semibold">
         {{book.name | titlecase}}, {{book.author | titlecase}} 
-        <span class="mt-2 text-gray-600">{{(book.price * quantity ).toFixed(2) | currency:'R'}}</span>
+        <span class="mt-2 text-gray-600">{{book.price  | currency:'R'}}</span>
       </p>
       <hr>
       <hr>
@@ -16,10 +16,12 @@
       
       <div class="flex items-center mt-4 space-x-4"> 
         <!-- <p class="text-lg font-semibold">{{quantity}}</p> -->
-        <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="decrement()" >-</button>
-        <p class="text-lg to-black rounded"  >{{ quantity }}</p>
-        <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="increment()" >+</button>
+        <button class="px-4 py-2 bg-amber-500 text-white rounded" *ngIf="!isInCart" (click)="viewsAddToCart()" >Add to cart</button>
 
+        <button class="px-4 py-2 bg-amber-500 text-white rounded" *ngIf="isInCart" (click)="decrement()" >-</button>
+        <p class="text-lg to-black rounded"  *ngIf="isInCart">{{ quantity }}</p>
+        <button class="px-4 py-2 bg-amber-500 text-white rounded" *ngIf="isInCart" (click)="increment()" >+</button>
+        <p class="" *ngIf="isInCart"> {{(book.price * quantity ).toFixed(2) }}</p>
       </div>
     </div>
   </li>

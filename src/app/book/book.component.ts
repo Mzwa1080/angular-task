@@ -20,8 +20,8 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkIfInCart()
-    this.initializeCartState()
-    this.initializeTotalAmount()
+    this.cartState()
+    this.totaAmount()
   }
 
   checkIfInCart() {
@@ -36,17 +36,17 @@ export class BookComponent implements OnInit {
   })
   }
 
-  initializeCartState() {
+  cartState() {
     const storedCartItems = this.behaviorService.getBooksFromLocalStorageForCart();
     if (storedCartItems) {
       const cartItems: Book[] = JSON.parse(storedCartItems);
       this.behaviorService.updateItems(cartItems); 
     }
   }
-  initializeTotalAmount() {
-    const storedTotalAmount = localStorage.getItem('Total-Amount');
-    if (storedTotalAmount) {
-      this.totalAmount = JSON.parse(storedTotalAmount);
+  totaAmount() {
+    const localStorageAmount = localStorage.getItem('Total-Amount');
+    if (localStorageAmount) {
+      this.totalAmount = JSON.parse(localStorageAmount);
     }
   }
 

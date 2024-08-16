@@ -12,7 +12,8 @@ import { BehaviorService } from '../shared/behavior.service';
 export class ViewsComponent implements OnInit {
   book: Book;
   quantity: number = 1;
-
+  isInCart: boolean =false
+  
   constructor(
     private route: ActivatedRoute,
     private bookService: BooksService,
@@ -30,6 +31,10 @@ export class ViewsComponent implements OnInit {
     this.getItemsInsideCart();
   }
 
+  viewsAddToCart(){
+    this.isInCart = true;
+    this.behaviorService.add(this.book)
+  }
   increment() {
     if (this.book) {
       this.behaviorService.add(this.book);
