@@ -52,6 +52,11 @@ export class CartComponent implements OnInit {
     console.log(this.behaviorService.getItems());
     
   }
+  
+
+  checkout(){
+    alert('The checkout')
+  }
 }
 
 

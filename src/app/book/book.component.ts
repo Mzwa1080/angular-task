@@ -36,6 +36,8 @@ export class BookComponent implements OnInit {
   })
   }
 
+
+
   cartState() {
     const storedCartItems = this.behaviorService.getBooksFromLocalStorageForCart();
     if (storedCartItems) {
@@ -51,10 +53,10 @@ export class BookComponent implements OnInit {
   }
 
 
-producerIncrementEpoch(){
-  this.behaviorService.add(this.book)
-  this.quantity++;
-}
+// producerIncrementEpoch(){
+//   this.behaviorService.add(this.book)
+//   this.quantity++;
+// }
 
   addToCart() {
     this.isInCart = true;

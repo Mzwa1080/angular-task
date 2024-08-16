@@ -66,7 +66,7 @@ export class BehaviorService {
       }
     }
   
-    console.log(this.behaviorSubject.value);
+    // console.log(this.behaviorSubject.value);
   }
   
   

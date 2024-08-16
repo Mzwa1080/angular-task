@@ -12,7 +12,7 @@ import { BehaviorService } from '../shared/behavior.service';
 export class ViewsComponent implements OnInit {
   book: Book;
   quantity: number = 1;
-  isInCart: boolean =false
+  isInCart: boolean = false
   
   constructor(
     private route: ActivatedRoute,
@@ -29,11 +29,21 @@ export class ViewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItemsInsideCart();
+    if(this.behaviorService.getBooksFromLocalStorageForCart()){
+      this.isInCart = true
+    }
   }
 
-  viewsAddToCart(){
-    this.isInCart = true;
-    this.behaviorService.add(this.book)
+  addingViewsToCart(){
+    if(this.behaviorService.getBooksFromLocalStorageForCart()){
+      this.behaviorService.getBooksFromLocalStorageForCart()
+      this.isInCart = true;   
+
+    }else if(!this.isInCart){
+      this.behaviorService.add(this.book)
+      this.isInCart = true;
+    }
+
   }
   increment() {
     if (this.book) {
@@ -42,14 +52,15 @@ export class ViewsComponent implements OnInit {
     }
   }
 
-  addBookToCartForView(){
-    this.behaviorService.add(this.book)
-  }
+
 
   decrement() {
     if (this.book && this.quantity > 0) {
       this.behaviorService.subtract(this.book);
-      this.updateQuantity();
+      this.updateQuantity();      
+    }
+    if(this.book && this.quantity == 0){
+      this.isInCart = false;
     }
   }
 
@@ -75,24 +86,13 @@ export class ViewsComponent implements OnInit {
   }
 
   bookPrice(){
-    // console.log(this.book.price);
-    // console.log(this.currentQuantity);
-
     if(this.quantity > 0){
       this.quantity  = this.quantity * this.book.price
       console.log(this.quantity);
       
     }else{
       this.quantity = this.book.price
-    }
-    
-    // if(this.quantity > 1){
-  //     this.book.price * this.quantity;
-  //   }
-  //   else{
-  //     this.quantity = this.book.price
-  //   }
-    
+    }    
   }
 
 
