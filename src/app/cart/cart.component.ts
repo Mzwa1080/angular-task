@@ -30,7 +30,9 @@ export class CartComponent implements OnInit {
     
     this.behaviorService.getCartTotalPrice().subscribe({
       next: (total: number) => {
-        this.totalAmount = total;
+        if(this.behaviorService.getBooksFromLocalStorageForCart()){
+          this.totalAmount = total;
+        }
       },
       error: (error) => {
       }
@@ -54,9 +56,7 @@ export class CartComponent implements OnInit {
   }
   
 
-  checkout(){
-    alert('The checkout')
-  }
+  
 }
 
 

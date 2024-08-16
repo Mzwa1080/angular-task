@@ -68,9 +68,6 @@ export class BehaviorService {
   
     // console.log(this.behaviorSubject.value);
   }
-  
-  
-  
 
   getItems() {
     // this.getBooksFromLocalStorageForCart()
