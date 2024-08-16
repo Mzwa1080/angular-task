@@ -104,32 +104,8 @@ export class BehaviorService {
 
 
 
-  // I need to get the price of the items in the cart.
-  // Need to loop through every item added there and console.log the price
-  // save that price in a new variable and print it 
-  getTotalNumberOfBooks() {
-    // console.log(this.behaviorSubject.value);
-    // let totalItems = this.behaviorSubject.value
-    for (let totalItems of this.behaviorSubject.value) {
-      const totalPrice = totalItems.price;
-      console.log(totalPrice);
-
-    }
 
   }
 
 
 
-  // getTotalPrice(): Observable<number> {
-  //   return this.behaviorSubject.asObservable().pipe(
-  //     map(books => books.reduce((total, book) => total + (book.price * book.quantity), 0))
-  //   );
-  // }
-
-
-
-
-  // getTotalPrice(): Observable<number>{
-  //   return this.behaviorSubject.asObservable().
-  // }
-}

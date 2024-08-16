@@ -3,18 +3,21 @@
 <div *ngIf="books.length > 0">
     <p class="text-lg font-semibold">{{books.length}} items</p>
 
-
-    <div *ngFor="let book of books" class="bg-white rounded-lg shadow-md p-4 m-2  mx-auto flex items-center justify-between space-x-4">
+    <div *ngFor="let book of books" class="bg-white rounded-lg shadow-md p-4 m-2 mx-auto flex items-center justify-between space-x-4">
         <img [src]="book.src" alt="" class="h-32 w-24 object-contain">
-        <p class="mt-2 text-lg font-semibold">
-            {{book.name | titlecase}}, {{book.author | titlecase}} 
-        </p>
-        <span class="mt-2 text-gray-600">Price : {{book.price   | currency:'R' }}  </span>
+        
+        <div>
+            <p class="mt-2 text-lg font-semibold">
+                {{book.name | titlecase}}, {{book.author | titlecase}} 
+            </p>
+            <span class="mt-2 text-gray-600">Price: {{book.price | currency:'R' }}</span>
+            <p class="text-lg font-bold mt-1">Total: {{(book.price * book.quantity).toFixed(2) | currency:'R'}}</p>
+        </div>
+
         <div class="flex items-center mt-4 space-x-4"> 
             <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="decrement(book)">-</button>
             <p class="text-lg font-semibold">{{ book.quantity }}</p>
             <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="increment(book)">+</button>
-            <p>{{(book.price * book.quantity).toFixed(2)}}</p>
         </div>
     </div>
 </div>
