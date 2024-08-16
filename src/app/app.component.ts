@@ -22,7 +22,7 @@ export class AppComponent {
   
   ngOnInit():void{
     initializeApp(firebaseConfig)
-    this.behaviorService.getTotalQuantity().subscribe(count => {
+    this.behaviorService.getTotalQuantityy().subscribe(count => {
       this.cartItemCount = count;
     });
   }

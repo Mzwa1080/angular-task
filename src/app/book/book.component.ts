@@ -20,9 +20,10 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkIfInCart()
+    this.initializeCartState()
+    this.initializeTotalAmount()
   }
 
-  // Need to check if item that is seleccted from the behavior is in the cart.
   checkIfInCart() {
     this.behaviorService.getItems().subscribe({
       next:(cartItems : Book[] ) =>{
@@ -35,6 +36,19 @@ export class BookComponent implements OnInit {
   })
   }
 
+  initializeCartState() {
+    const storedCartItems = this.behaviorService.getBooksFromLocalStorageForCart();
+    if (storedCartItems) {
+      const cartItems: Book[] = JSON.parse(storedCartItems);
+      this.behaviorService.updateItems(cartItems); 
+    }
+  }
+  initializeTotalAmount() {
+    const storedTotalAmount = localStorage.getItem('Total-Amount');
+    if (storedTotalAmount) {
+      this.totalAmount = JSON.parse(storedTotalAmount);
+    }
+  }
 
 
 producerIncrementEpoch(){
@@ -57,3 +71,4 @@ producerIncrementEpoch(){
 
 
 }
+
