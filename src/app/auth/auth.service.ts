@@ -16,7 +16,7 @@ export class AuthService {
   auth = getAuth();
   
   private timeoutHandle: any;
-  private readonly SESSION_TIMEOUT = 1 * 60 * 1000;
+  private readonly SESSION_TIMEOUT = 10 * 60 * 1000;
 
 
 
@@ -43,7 +43,10 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        console.log(user);
+        
         localStorage.setItem('User-Email', form.email)
+        this.isAuthenticated = false
         this.router.navigate([''])
       })
       .catch((error) => {

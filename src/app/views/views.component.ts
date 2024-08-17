@@ -31,7 +31,9 @@ export class ViewsComponent implements OnInit {
     this.getItemsInsideCart();
     if(this.behaviorService.getBooksFromLocalStorageForCart()){
       this.isInCart = true
+      this.behaviorService.getTotalQuantityy()
     }
+  
   }
 
   addingViewsToCart(){

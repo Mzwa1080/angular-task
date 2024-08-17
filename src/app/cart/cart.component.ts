@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
 
   books: Book[] = [];
   totalAmount = 0;
+  bookItems : any = false;
 
   constructor(private readonly behaviorService: BehaviorService) { }
   
@@ -36,8 +37,18 @@ export class CartComponent implements OnInit {
       },
       error: (error) => {
       }
-    });    // console.log(this.behaviorService.getCartItems());
+    });    
+    this.displayBookItems()
+  }
 
+  displayBookItems() {
+    this.behaviorService.getTotalQuantityy().subscribe(value => {
+      if (value > 1) {
+        this.bookItems = true;
+      } else {
+        this.bookItems = false;  
+      }
+    });
   }
 
 

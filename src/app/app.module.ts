@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
 import { provideUserIdleConfig } from 'angular-user-idle';
 import { ViewsComponent } from './views/views.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -21,6 +22,7 @@ import { ViewsComponent } from './views/views.component';
     BookComponent,
     CartComponent,
     ViewsComponent,
+    CheckoutComponent,
     
   ],
   imports: [

@@ -1,8 +1,8 @@
 <h1>Your Cart!</h1>
 <h2></h2>
 
-<div *ngIf="books.length > 0">
-    <p class="text-lg font-semibold">{{books.length}} items</p>
+<div *ngIf="books.length > 0" >
+    <p class="text-lg font-semibold">{{books.length}} item<span *ngIf="bookItems">s</span></p>
     <p class="text-lg font-semibold">Total : {{(totalAmount.toFixed(2) ) | currency:'R'}} </p>
 
     <div *ngFor="let book of books" class="bg-white rounded-lg shadow-md p-4 m-2 mx-auto flex items-center justify-between space-x-4">
@@ -20,7 +20,13 @@
             <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="decrement(book)">-</button>
             <p class="text-lg font-semibold">{{ book.quantity }}</p>
             <button class="px-4 py-2 bg-amber-500 text-white rounded" (click)="increment(book)">+</button>
-        </div>
+        </div>            
+        
+    </div>
+
+    <div class="grid">
+
+        <button class="px-4 py-2 bg-amber-500 text-white justify-end rounded" routerLink="/checkout" >Checkout</button>
     </div>
 
 </div>
