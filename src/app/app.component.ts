@@ -14,7 +14,7 @@ import { BehaviorService } from './shared/behavior.service';
 
 export class AppComponent {
   
-    cartItemCount: number = 0;
+  cartItemCount: number = 0;
   title = 'Book-Library';
   cartItems: CartComponent
   itemsValue : number 

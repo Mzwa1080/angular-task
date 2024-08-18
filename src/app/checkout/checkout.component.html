@@ -1,32 +1,106 @@
-<div class="min-h-screen bg-gradient-to-b text-black flex">
-    <div class="w-1/2 p-8">
-      <h1 class="text-5xl font-bold text-amber-600 mb-10">CHECKOUT</h1>
-  
-      <div class="mb-8">
-        <label for="email" class="block text-2xl font-bold mb-2">CONTACT</label>
-        <input type="email" id="email" placeholder="Your email address"  [name]="email" class="w-full p-4 bg-purple-200 border-white rounded mb-4">
+<div class="flex justify-between">
+  <!-- Left Section (Checkout Form) -->
+  <div class="w-2/3 p-8">
+    <h1 class="text-4xl font-bold text-amber-600">CHECKOUT</h1>
 
-      </div>
-  
-      <div>
-        <h2 class="text-2xl font-bold ">DELIVERY ADDRESS</h2>
-        <div class="flex mb-4">
-          <input type="text" placeholder="First Name" class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
-          <input type="text" placeholder="Last Name" class="w-1/2 p-4 bg-purple-200 border-white rounded">
-        </div>
-
-        <div class="mb-4">
-          <input type="text" placeholder="Address" class="w-full p-4 bg-purple-200 border-white rounded">
-        </div>
-        <div class="flex mb-4">
-          <input type="text" placeholder="City" class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
-          <input type="text" placeholder="Postcode/ZIP" class="w-1/2 p-4 bg-purple-200 border-white rounded">
-        </div>
-      </div>
+    <div class="mb-8">
+      <input type="email" placeholder="Your email address" class="w-full p-4 mt-2 bg-purple-200 border-white rounded">
     </div>
+
+    <form class="mb-8">
+      <h2 class="text-2xl font-bold">DELIVERY ADDRESS</h2>
+      <div class="flex mb-4">
+        <input type="text" placeholder="First Name" class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
+        <input type="text" placeholder="Last Name" class="w-1/2 p-4 bg-purple-200 border-white rounded">
+      </div>
+      <div class="mb-4">
+        <input type="text" placeholder="Address" class="w-full p-4 bg-purple-200 border-white rounded">
+      </div>
+      <div class="flex mb-4">
+        <input type="text" placeholder="City" class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
+        <input type="text" placeholder="Postcode/ZIP" class="w-1/2 p-4 bg-purple-200 border-white rounded">
+      </div>
+    </form>
+
+    <div class="flex">
+      <button class="w-1/2 m-3  bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" *ngIf="paymentMethodBtn"
+      (click)="payWithVisa()" >
+      Pay with card
+    </button>
+  
+    <button class="w-1/2  m-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 rounded" *ngIf="paymentMethodBtn"
+     (click)="payWithOzow()">
+    Pay with Ozow
+  </button>
+
+    </div>
+
+    <form class="mb-8" *ngIf="paymentMethod">
+      <h2 class="text-2xl font-bold">PAY WITH CARD</h2>
+      <div class="flex mb-4">
+        <input type="text" placeholder="OWNER" class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
+        <input type="number" placeholder="CVV" class="w-1/2 p-4 bg-purple-200 border-white rounded">
+      </div>
+      <div class="mb-4">
+        <input type="number" placeholder="Card Number" class="w-full p-4 bg-purple-200 border-white rounded">
+      </div>
+      <div class="flex mb-4">
+        <input type="number" placeholder="Month  " class="w-1/2 p-4 mr-2 bg-purple-200 border-white rounded">
+        <input type="number" placeholder="Year" class="w-1/2 p-4 bg-purple-200 border-white rounded">
+      </div>
+      <div class="flex justify-between   mt-4" >
+        <button routerLink="#" class="hover:underline">CANCEL</button>
+        <button class=" px-4 py-2 hover:bg-purple-700 bg-amber-500 text-white rounded"  > Pay {{totalAmountOfBooks}} </button>
+      </div>
+    </form>
+    
+    <form class=" mx-auto p-8 bg-purple-200 rounded-xl shadow-lg " *ngIf="!paymentMethod">
+      <div class="flex justify-between items-center mb-4">
+        <div class="text-green-600 font-bold text-lg">Total</div>
+        <div class="text-gray-700 font-semibold">{{totalAmountOfBooks}}</div>
+      </div>
+    
+
+    
+      <div class="text-xl font-semibold text-gray-700 mb-2">Select your bank</div>
+      <div class="text-gray-500 mb-6">Select the bank you wasnt to to pay with</div>
+    
+      <div class="grid grid-cols-2 gap-2">
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          CAPITEC
+        </button>
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          FIRST NATIONAL BANK
+        </button>
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          STANDARD BANK
+        </button>
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          ABSA
+        </button>
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          NEDBANK
+        </button>
+        <button class="bg-white py-4 px-6 rounded-lg shadow text-gray-700 font-semibold hover:bg-gray-100">
+          TYME BANK
+        </button>
+
+      </div>
+
+      <div class="flex justify-between mt-6 text-gray-500">
+        <button routerLink="#" class="hover:underline">CANCEL</button>
+        <button routerLink="/successful" class=" px-4 py-2 hover:bg-purple-700 bg-amber-500 text-white rounded">Pay {{totalAmountOfBooks}}</button>
+
+      </div>
+    </form>
+    
+
+  </div>
+
+
   
     <div class="w-1/2 p-10 bg-amber-20">
-      <div class="flex justify-between items-center border-b-2 border-amber-500 pb-4 mb-8">
+      <div class="flex justify-between items-center border-b-2 border-amber-00 pb-4 mb-8">
         <span class="text-lg font-bold text-black">Shipping Information</span>
       </div>
   
@@ -41,26 +115,19 @@
         </div>
         <p class="text-sm m-2 font-bold text-black">{{(book.price).toFixed(2) | currency:'R'}}</p>
       </div>
-
-  
-      <!-- <div class="flex justify-between items-center mt-8">
-        <span class="text-lg text-black">SUB TOTAL</span>
-        <span class="text-xl font-bold text-black">$279.00</span>
-      </div> -->
-  
-      <!-- <div class="flex justify-between items-center mt-4">
-        <span class="text-lg text-black">SHIPPING</span>
-        <input type="text" placeholder="ENTER SHIPPING ADDRESS" class="w-1/2 p-4 bg-purple-200 border-white rounded">
-      </div> -->
   
       <div class="flex justify-between items-center mt-8">
         <span class="text-lg text-black">TOTAL</span>
-        <span class="text-2xl font-bold text-black">{{279.00}}</span>
+        <span class="text-2xl font-bold text-black">{{totalAmountOfBooks}}</span>
       </div>
-      
-      <div class="flex float-end  mt-4" >
-        <button class=" px-4 py-2 hover:bg-green-500 bg-amber-500 text-white rounded" (click)="totalProducts()" > Pay {{totalAmountOfBooks}} </button>
-      </div>
+    
     </div>
+
+
+
+
+
+
+
   </div>
   

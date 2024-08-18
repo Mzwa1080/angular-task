@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorService } from '../shared/behavior.service';
 import { Book } from '../interface/Book';
+import { LoginComponent } from '../auth/login/login.component';
 
 @Component({
   selector: 'app-checkout',
@@ -8,17 +9,24 @@ import { Book } from '../interface/Book';
   styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent implements OnInit {
-  email = 'mshawnlouw@gmail.com'
+  
   books : Book[] = []
-  totalAmountOfBooks : number = 0; 
+  totalAmountOfBooks : number = 0;
+  paymentMethodBtn:Boolean = true; 
+  paymentMethod: Boolean = true;
 
   constructor(private behaviorService : BehaviorService){
-
-  }
-
-  ngOnInit(){
     this.getBooksFromLocalStorageInBehaviorSubject()
-    this.totalProducts()
+  }
+  payWithVisa(){
+    this.paymentMethod = true
+  }
+  payWithOzow(){
+    this.paymentMethod = !this.paymentMethod
+  }
+  
+  ngOnInit(){
+    this.totalProducts()    
 
   }
 
@@ -43,5 +51,7 @@ export class CheckoutComponent implements OnInit {
       }
     });
   }
+  
+  
 
 }
